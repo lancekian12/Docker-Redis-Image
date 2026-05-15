@@ -1,9 +1,11 @@
-# Specify base image
-FROM node:14-alpine
+FROM node:22-alpine
 
-# Download and install dependency
-RUN  npm install
+WORKDIR /app
 
+COPY package*.json ./
 
-# Tell the image what to do when it starts as container
+RUN npm install
+
+COPY . .
+
 CMD ["npm", "start"]
